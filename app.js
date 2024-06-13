@@ -177,7 +177,7 @@ app.listen(port, () => {
 
 async function getRow(table, row, value) {
   try {
-    const result = await db.query("SELECT * FROM $1 WHERE $2 = $3;", [table, row, value]);
+    const result = await db.query("SELECT * FROM " + table +" WHERE " + row + " = $3;");
     return result.rows;
   } catch (error) {
     return {error: error};
@@ -186,7 +186,7 @@ async function getRow(table, row, value) {
 
 async function getTable(table) {
     try {
-        const result = await db.query("SELECT * FROM $1;", [table]);
+        const result = await db.query("SELECT * FROM " + table +";");
         return result.rows;
     } catch (error) {
         return {error: error};
