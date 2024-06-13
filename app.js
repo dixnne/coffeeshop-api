@@ -177,7 +177,7 @@ app.listen(port, () => {
 
 async function getRow(table, row, value) {
   try {
-    const result = await db.query("SELECT * FROM $1 WHERE $2 = $3", [table, row, value]);
+    const result = await db.query("SELECT * FROM $1 WHERE $2 = $3;", [table, row, value]);
     return result.rows;
   } catch (error) {
     return {error: error};
@@ -186,7 +186,7 @@ async function getRow(table, row, value) {
 
 async function getTable(table) {
     try {
-        const result = await db.query("SELECT * FROM $1", [table]);
+        const result = await db.query("SELECT * FROM $1;", [table]);
         return result.rows;
     } catch (error) {
         return {error: error};
@@ -268,7 +268,7 @@ async function postOrder(client_id, date, total) {
 async function deleteRow(table, key, id) {
     try {
         await db.query(
-            "DELETE FROM $1 WHERE $2 = $3",
+            "DELETE FROM $1 WHERE $2 = $3;",
             [table, key, id]
         );
         return {message: "Successfully deleted register with id " + id};
