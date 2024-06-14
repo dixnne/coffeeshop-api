@@ -116,7 +116,7 @@ app.post("/suppliers", async (req, res) => {
 });
 
 app.post("/supplies", async (req, res) => {
-    const { name, quantity } = JSON.parse(req.body);
+    const { name, quantity } = req.body;
     const result = await postSupply(name, quantity);
     res.json(result);
 });
