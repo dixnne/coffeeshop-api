@@ -17,6 +17,7 @@ db.connect();
 
 app.use(cors());
 app.use(bodyParser.urlencoded({ extended: true }));
+app.use(bodyParser.json());
 app.use(express.static("public"));
 
 //Get all from a table 
