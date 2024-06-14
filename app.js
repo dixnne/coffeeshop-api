@@ -116,7 +116,7 @@ app.post("/suppliers", async (req, res) => {
 });
 
 app.post("/supplies", async (req, res) => {
-    const { name, quantity } = req.body;
+    const { name, quantity } = JSON.parse(req.body);
     const result = await postSupply(name, quantity);
     res.json(result);
 });
@@ -177,7 +177,7 @@ app.listen(port, () => {
 
 async function getRow(table, row, value) {
   try {
-    const result = await db.query("SELECT * FROM " + table +" WHERE " + row + " = $3;", [value]);
+    const result = await db.query("SELECT * FROM " + table +" WHERE " + row + " = $1;", [value]);
     return result.rows;
   } catch (error) {
     return {error: error};
