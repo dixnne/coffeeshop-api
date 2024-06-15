@@ -268,7 +268,7 @@ async function postOrder(client_id, date, total) {
 
 async function deleteRow(table, key, id) {
     try {
-        await db.query(
+        const result = await db.query(
             "DELETE FROM " + table + " WHERE " + key + " = "+ id +";"
         );
         return {message: "Successfully deleted register with id " + id};
