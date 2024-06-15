@@ -271,7 +271,7 @@ async function deleteRow(table, key, id) {
         const result = await db.query(
             "DELETE FROM " + table + " WHERE " + key + " = "+ id +";"
         );
-        return {message: "Successfully deleted register with id " + id};
+        return result;
     } catch (error) {
         return {error: error};
     }
